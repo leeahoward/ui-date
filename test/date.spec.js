@@ -78,6 +78,20 @@ describe('uiDate', function() {
       }).toThrow();
     });
   });
+  describe('accept empty string value when using ui-date-format', function() {
+    var element;
+    var scope;
+    beforeEach(inject(function($compile, $rootScope) {
+      element = $compile('<input ui-date-format ng-model="x"/>')($rootScope);
+      scope = $rootScope;
+    }));
+    it('should not freak out when the model is null', function() {
+      scope.$apply(function() {
+        scope.x = '';
+      });
+      expect(element.val()).toEqual('');
+    });
+  });
 
   it('should update the input field correctly on a manual update', function() {
       inject(function($compile, $rootScope) {

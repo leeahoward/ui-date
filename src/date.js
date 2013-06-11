@@ -107,7 +107,7 @@ angular.module('ui.date', [])
       } else {
         // Default to ISO formatting
         modelCtrl.$formatters.push(function(value) {
-          if (angular.isString(value) ) {
+          if(angular.isString(value) && value.length!==0 ) {
             return new Date(value);
           }
           return null;
